@@ -1,0 +1,18 @@
+#content > div > section:nth-child(1) {
+  width: 400px;
+}
+dt {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+dd {
+  margin-bottom: 20px;
+  font-size: 90%;
+}
+canvas {
+  border: 1px solid #BBB;
+  margin-top: 5px;
+}
+button {
+  margin-top:10px;
+}

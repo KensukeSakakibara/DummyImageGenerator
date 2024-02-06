@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/destyle.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/jszip.min.js"></script>
+  <script src="js/index.js"></script>
+  <title>Dummy image generator</title>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Dummy image generator</h1>
+    </div>
+  </header>
+  <div id="content">
+    <div>
+      <section>
+        <dl>
+          <dt>Size</dt>
+          <dd>
+            Width: <input type="text" id="width" value="300" style="width:70px; margin-right:15px;">
+            Height: <input type="text" id="height" value="100" style="width:70px;">
+          </dd>
+          <dt>Background Color</dt>
+          <dd><input type="text" id="background_color" value="#eeeeee"></dd>
+          <dt>Text</dt>
+          <dd><input type="text" id="display_text" value="DummyImage"></dd>
+          <dt>Font size</dt>
+          <dd><input type="text" id="font_size" value="18"></dd>
+          <dt>Text position</dt>
+          <dd>
+            X: <input type="text" id="position_x" value="70" style="width:70px; margin-right:15px;">
+            Y: <input type="text" id="position_y" value="55" style="width:70px;">
+          </dd>
+          <dt>Amount</dt>
+          <dd><input type="text" id="amount" value="5"></dd>
+          <dt>Number</dt>
+          <dd>
+            Start: <input type="text" id="start_num" value="1" style="width:70px; margin-right:15px;">
+            Add: <input type="text" id="add_count" value="5" style="width:70px;">
+          </dd>
+        </dl>
+        <button type="button" id="create_btn">Create Image</button><br>
+      </section>
+      <section>
+        <button type="button" id="download_btn">Download</button>
+        <div id="canvas_area"></div>
+      </section>
+    </div>
+    <footer>
+      <div>
+        <p>(c) 2024 Kensuke Sakakibara.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
