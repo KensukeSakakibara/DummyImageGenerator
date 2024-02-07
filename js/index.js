@@ -11,6 +11,9 @@ $(function(){
     var start_num = parseInt($("#start_num").val());
     var add_count = parseInt($("#add_count").val());
 
+    // 生成されているCanvas等があれば削除
+    $("#canvas_area").empty();
+
     var display_num = start_num;
 
     for (var i = 0; i < amount; i++) {
@@ -29,12 +32,18 @@ $(function(){
 
       display_num += add_count;
     }
+
+    $("#download_btn").css("display", "block");
   });
 
   $("#download_btn").on("click", () => {
+    // JSZipを読み込む
     const zip = new JSZip();
+
+    // #chanvas_areaに入っているcanvasを取り出す
     const child_nodes = $("#canvas_area").children("canvas");
 
+    // blobの生成が非同期になるのでPromiseで終了を捕捉する
     let add_to_zip = (zip_obj, canvas, filename) => {
       return new Promise((resolve, reject) => {
         canvas.toBlob(blob => {
@@ -44,15 +53,17 @@ $(function(){
       });
     }
 
+    // 一旦add_to_zipを配列に入れておく
     add_to_zip_array = [];
     for (var i = 0; i < child_nodes.length; i++) {
       var name = $(child_nodes[i]).attr("name");
       add_to_zip_array.push(add_to_zip(zip, child_nodes[i], name + ".png"));
     }
 
+    // 全てのblobができたらzipにまとめてダウンロードさせる
     Promise.all(add_to_zip_array).then(() => {
-      zip.generateAsync({type:"blob"}).then(function(compressData) {
-        var zip_blob = new Blob([compressData], { 'type': 'application/zip' });
+      zip.generateAsync({type:"blob"}).then(compressData => {
+        var zip_blob = new Blob([compressData], {'type': 'application/zip'});
         const a = document.createElement("a");
         a.href = URL.createObjectURL(zip_blob);
         a.download = "dummy.zip";

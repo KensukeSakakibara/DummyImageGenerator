@@ -16,3 +16,6 @@ canvas {
 button {
   margin-top:10px;
 }
+#canvas_area {
+  margin-top: 5px;
+}
